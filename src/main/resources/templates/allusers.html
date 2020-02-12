@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+
+
+
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Userübersicht</title>
+    <link href="style.css" th:href="@{/style.css}" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+</head>
+<body>
+<h1>Userübersicht</h1>
+<table class="pure-table">
+    <tr>
+        <th>Vorname</th>
+        <th>Nachname</th>
+        <th>eMail-Adresse</th>
+        <th id="th_modify" ></th>
+        <th id="th_delete"></th>
+
+
+    <tr th:each="user : ${users}">
+        <td th:utext="${user.firstName}"></td>
+        <td th:utext="${user.lastName}"></td>
+        <td th:utext="${user.eMail}"></td>
+        <td id="modify"><a  th:href="@{/user/edit/{userId}(userId = ${user.id})}"><i class="fa fa-edit"></i></a></td>
+        <td id="td_delete">  <form th:action="@{'/user/delete/{id}'(id=${user.id})}" th:method="processDeleteUser" >
+            <input type="hidden" name="_method" value="processDeleteUser" />
+            <button type="submit" id="submitButton"> <i class="fa fa-trash"></i> </button>
+        </form>
+
+        </td>
+    </tr>
+</table>
+<a id="new_user" href="/user/add">Neuen Benutzer anlegen</a>
+
+</body>
+</html>
+

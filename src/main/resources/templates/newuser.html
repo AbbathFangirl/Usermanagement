@@ -1,0 +1,21 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Neuen User anlegen</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link href="style.css" th:href="@{/style.css}" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+<h1>person anlegen</h1>
+
+<form th:action=@{/user/add} method="post" th:object="${user}">
+    <p>Nachname: <input type="text" id="lastName" name="lastName" value="" th:required="required"/></p>
+    <p>Vorname: <input type="text" id="firstName" name="firstName" value="" th:required="required"/></p>
+    <p>eMail-Adresse: <input type="text" id="eMail" name="eMail" value=""/></p>
+    <p><input type="submit" value="speichern" /> <input type="reset" value="zurücksetzen" /></p>
+</form>
+<a id="new_user" href="/user/all">zurück</a>
+
+</body>
+</html>
