@@ -11,7 +11,7 @@ import org.springframework.http.MediaType;
 public class UsermanagementdbApplicationLiveTest {
 
     private static final String API_ROOT
-            = "http://localhost:8080/";
+            = "http://localhost:8080/api";
 
     private User createTestUser() {
         User user = new User();
@@ -23,6 +23,9 @@ public class UsermanagementdbApplicationLiveTest {
 
 
     private String createUserAsUri(User user) {
+
+
+
         Response response = RestAssured.given()
                 .contentType(MediaType.APPLICATION_JSON_VALUE)
                 .body(user)
@@ -37,7 +40,7 @@ public class UsermanagementdbApplicationLiveTest {
         Response response = RestAssured.given()
                 .contentType(MediaType.APPLICATION_JSON_VALUE)
                 .body(user)
-                .post(API_ROOT);
+                .post(API_ROOT+"/user/add");
 
         assertEquals(HttpStatus.CREATED.value(), response.getStatusCode());
     }
